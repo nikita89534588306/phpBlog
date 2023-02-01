@@ -4,7 +4,7 @@
 	function tt($value){
 		echo '<pre>';
 		print_r($value);
-		echo '<pre>';
+		echo '</pre>';
 	}
 
 	function dbCheckError($query){
@@ -58,6 +58,7 @@
 		$query = $pdo->prepare($sql);
 		$query->execute();
 		dbCheckError($query);
+		return $pdo->lastInsertId();
 	}
 
 	function update($table, $id, $params){
