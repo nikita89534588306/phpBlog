@@ -60,12 +60,44 @@
 		dbCheckError($query);
 	}
 
+	function update($table, $id, $params){
+		global $pdo;
+		$i = 0;
+		$str = '';
+		foreach($params as $key => $value ){
+			if($i===0){
+				$str = $str . $key . " = '" . $value . "'";
+			}else{
+				$str = $str . ", " . $key . " = '" . $value . "'";	
+			}
+			$i++;
+		}
+
+		$sql = "UPDATE $table SET $str WHERE id = $id";
+		$query = $pdo->prepare($sql);
+		$query->execute();
+		dbCheckError($query);
+	}
+
+	function delete($table, $id){
+		global $pdo;
+		$sql = "DELETE FROM $table WHERE id = $id";
+		$query = $pdo->prepare($sql);
+		$query->execute();
+		dbCheckError($query);
+	}
+
+
+	// update('users', 2, ['user_name' => "xxx", "admin" => "1"]);
+
 	// insert('users', [
 	// 	"admin" => "0",
-	// 	"user_name" => "new",
-	// 	"email" => "123@mail.ru",
-	// 	"password" => "123321",
+	// 	"user_name" => "newXXX",
+	// 	"email" => "123XXX@mail.ru",
+	// 	"password" => "1233221",
 	// 	"created_data" => "2021-01-01 00:00:01"
 	// ]);
+
+	// delete("users", 2);
 
 	// tt(selectAll('users'));
