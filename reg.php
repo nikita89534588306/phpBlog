@@ -1,6 +1,4 @@
-<?php 
-	include 'app/controllers/users.php'
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +45,7 @@
 						<input type="password" name="confirmPass"class="form-control" id="confirmPass_Auth">
 					</div>
 					<div class="row justify-content-between mt-3"  >
-						<button type="submit"  style='margin: 0 12px 0 12px;' class=" col-4 btn btn-secondary">Отправить</button>
+						<button type="submit"  name="btn-reg" value="1" style='margin: 0 12px 0 12px;' class=" col-4 btn btn-secondary">Отправить</button>
 						<a href="./login.html" style='margin: 0 12px 0 12px;' class="col-4  btn btn-light ">Войти</a>
 					</div>
 				</form>
