@@ -1,8 +1,10 @@
 <?php
 	include 'app/database/database.php';
+	function validationUsersData(){
 
-	$isSubmit = false;
-	$errMsg = ''; 
+	}
+
+	$authMsg = ''; 
 
 	if($_SERVER["REQUEST_METHOD"] === 'POST'){
 		echo 'POST';
@@ -13,24 +15,19 @@
 
 
 		if(	$login === '' ||  $email === '' ||  $password=== '' || $confirmPass === ''){
-			$errMsg = "Не все поля заполнены";
+			$authMsg = "Не все поля заполнены";
 		}
 		elseif(mb_strlen($login, 'UTF8') < 2){
-			$errMsg = 'Логин не может быть короче 2-х символов';
+			$authMsg = 'Логин не может быть короче 2-х символов';
 		}
 		elseif($password !== $confirmPass){
-			$errMsg = 'Пароли не совпадают';
+			$authMsg = 'Пароли не совпадают';
 		}
 		else
 		{
-
-			$query = $pdo->prepare("SELECT * FROM users WHERE email='".$email ."' LIMIT 1" );
-			$query->execute();
-			$existence = $query->fetch();
-			tt($existence);
-			tt($existence==true);
-			if($existence==false){
-				$errMsg = 'Пользователь с такой почтой уже зарегистрирован';
+			$existence = selectOne("users", ["email" => $email]);
+			if($existence!==false){
+				$authMsg = 'Пользователь с такой почтой уже зарегистрирован';
 			}
 			else
 			{
@@ -40,10 +37,10 @@
 					"email" => $email,
 					"password" => password_hash($password, PASSWORD_DEFAULT)
 				];
+				$id = insert('users', $dataUser);
+				$authMsg = "Пользователь $login успешно зарегистрирован";
 			}
-	
-			// $id = insert('users', $dataUser);
-			$isSubmit = true;
+			
 		}
 
 	}else{

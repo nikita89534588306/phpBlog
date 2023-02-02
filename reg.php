@@ -16,7 +16,15 @@
 			<div class="col-8 mt-4 mb-4">
 				<div style='text-align: center;'class="h2">Форма регистрации</div>
 				<form class="my-2" method="post" action="reg.php">
-					<?php if($errMsg !== '') echo '<div class="alert alert-danger" role="alert">' .$errMsg .'</div>' ?>  
+					<?php 
+
+						if($authMsg == "Пользователь $login успешно зарегистрирован"){ 
+							echo '<div class="alert alert-success" role="alert">' .$authMsg .'</div>';
+						}else if($authMsg !== '') {
+							 echo '<div class="alert alert-danger" role="alert">' .$authMsg .'</div>';	
+						};
+
+					?>  
 					<div class="mb-3">
 						<label for="nameAuth" class="form-label">Введите имя</label>
 						<input type="text" value="<?=$login?>" class="form-control" name="login" id="nameAuth">
