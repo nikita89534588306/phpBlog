@@ -1,4 +1,6 @@
 <?php
+
+	
 	require('conect.php');
 
 	function tt($value){
@@ -37,8 +39,6 @@
 		dbCheckError($query);
 		return $query->fetchAll();
 	}
-
-
 	
 	function selectOne($table, $params = []){
 		global $pdo;
@@ -114,17 +114,3 @@
 		dbCheckError($query);
 	}
 
-
-	// update('users', 2, ['user_name' => "xxx", "admin" => "1"]);
-
-	// insert('users', [
-	// 	"admin" => "0",
-	// 	"user_name" => "newXXX",
-	// 	"email" => "123XXX@mail.ru",
-	// 	"password" => "1233221",
-	// 	"created_data" => "2021-01-01 00:00:01"
-	// ]);
-
-	// delete("users", 2);
-
-	// tt(selectAll('users'));

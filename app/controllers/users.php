@@ -1,8 +1,5 @@
 <?php
 	include 'app/database/database.php';
-	function validationUsersData(){
-
-	}
 
 	$authMsg = ''; 
 
