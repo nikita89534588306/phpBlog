@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST' && isset($_POST['btn-log'])){
 			$_SESSION['user_name'] = $existence["user_name"];
 			$_SESSION['admin'] = $existence["admin"];
 
-			if($_SESSION['admin'] ) header('Location:' . 'http://localhost/admin/admin.php');
+			if($_SESSION['admin'] ) header('Location:' . 'http://localhost/app/admin/admin.php');
 			else header('Location:' .  'http://localhost');
 		}
 		else

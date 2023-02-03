@@ -27,7 +27,7 @@
 					<ul class='user-account'>
 						<?php 
 							if(isset($_SESSION['admin'])&&$_SESSION['admin'] == 1) 
-									echo "<li class='user-account-item'><a href='/admin/admin.php'>Админ панель</a></li>";
+									echo "<li class='user-account-item'><a href='app/admin/admin.php'>Админ панель</a></li>";
 						?>
 						<?php 
 							if(isset($_SESSION['user_name'])) 
